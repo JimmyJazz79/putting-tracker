@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"/&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-capable" content="yes"/&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/&gt;</p>
+<p class="p1">&lt;meta name="theme-color" content="#030712"/&gt;</p>
+<p class="p1">&lt;title&gt;Putting Tracker&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body{background:#030712;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;max-width:480px;margin:0 auto}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button{cursor:pointer;border:none;font-family:inherit}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input{font-family:inherit;font-size:16px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.screen{min-height:100vh;padding:16px;display:flex;flex-direction:column}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Home */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.home-header{text-align:center;margin:32px 0 28px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.home-header .emoji{font-size:52px;display:block;margin-bottom:10px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.home-header h1{font-size:28px;font-weight:900;letter-spacing:-0.5px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.home-header p{color:#6b7280;font-size:14px;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pb-card{background:#111827;border-radius:20px;padding:20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pb-card .label{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.1em}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pb-card .big{font-size:40px;font-weight:900;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pb-card .sub{font-size:11px;color:#6b7280;margin-top:2px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-primary{background:#f59e0b;color:#111827;font-weight:900;font-size:20px;padding:20px;border-radius:20px;width:100%;margin-bottom:12px;box-shadow:0 8px 24px rgba(245,158,11,.25)}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-primary:active{transform:scale(.97)}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-secondary{background:#111827;color:#fff;font-weight:700;font-size:15px;padding:18px;border-radius:18px;width:100%}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-secondary:active{background:#1f2937}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.recent-label{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.recent-item{background:#111827;border-radius:14px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.recent-item .name{font-size:14px;font-weight:700}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.recent-item .date{font-size:11px;color:#6b7280;margin-top:2px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.recent-score{font-size:22px;font-weight:900}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Setup */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.setup-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:20px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.setup-wrap h2{font-size:24px;font-weight:900;color:#f59e0b}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.setup-card{background:#111827;border-radius:20px;padding:24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:16px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field-label{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.toggle-row{display:flex;gap:10px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.toggle-btn{flex:1;padding:10px;border-radius:14px;font-weight:700;font-size:14px;transition:all .15s}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field-input{width:100%;background:#1f2937;border:none;border-radius:14px;padding:12px 16px;color:#fff;font-size:16px;outline:none}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field-input:focus{box-shadow:0 0 0 2px #f59e0b}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-cancel{color:#6b7280;font-size:14px;background:none;text-align:center;padding:8px}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Round */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header{display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header .quit{color:#6b7280;font-size:14px;background:none}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header .hole-info{text-align:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header .hole-info .direction{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.1em}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header .hole-info .hole-num{font-size:26px;font-weight:900;color:#f59e0b}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header .score-box{text-align:right}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header .score-box .slabel{font-size:11px;color:#6b7280}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.round-header .score-box .sval{font-size:22px;font-weight:900}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.player-tabs{display:flex;gap:8px;margin-bottom:10px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.player-tab{flex:1;text-align:center;padding:10px;border-radius:14px;font-size:13px;font-weight:700;transition:all .15s}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-area{background:#111827;border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:16px;flex:1;justify-content:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-label{font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.1em}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-buttons{display:flex;gap:14px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-btn{width:68px;height:68px;border-radius:18px;font-size:26px;font-weight:900;border:2px solid;transition:all .15s}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-btn:active{transform:scale(.93)}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-result{text-align:center;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-result .symbol{font-size:26px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.putt-result .result-label{font-weight:700;margin-top:4px;font-size:15px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hole-grid{background:#111827;border-radius:18px;padding:14px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hole-grid-inner{display:grid;grid-template-columns:repeat(9,1fr);gap:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.hole-cell{aspect-ratio:1;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;display:flex;align-items:center;justify-content:center;transition:all .15s}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.grid-labels{display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:#6b7280}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav-row{display:flex;gap:10px;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-back{flex:1;background:#111827;color:#d1d5db;font-weight:700;font-size:15px;padding:16px;border-radius:16px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-back:disabled{opacity:.3}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-next{flex:2;font-weight:900;font-size:16px;padding:16px;border-radius:16px;background:#f59e0b;color:#111827}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-next:disabled{opacity:.3}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Finish */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.finish-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:20px;padding:20px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.finish-screen .trophy{font-size:56px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.finish-screen h2{font-size:32px;font-weight:900;color:#f59e0b}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-card{background:#111827;border-radius:20px;padding:24px;width:100%;max-width:360px;text-align:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-card .pname{color:#9ca3af;font-size:14px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-card .big-score{font-size:64px;font-weight:900;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-card .sub{color:#9ca3af;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-card .note{margin-top:10px;font-weight:700;font-size:14px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.h2h-card{background:#1f2937;border-radius:20px;padding:16px;width:100%;max-width:360px;text-align:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.h2h-card p{color:#9ca3af;font-size:13px;margin-bottom:6px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.h2h-card .winner{font-weight:700;font-size:17px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-done{background:#f59e0b;color:#111827;font-weight:900;font-size:18px;padding:16px 40px;border-radius:18px}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* History */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.back-header{display:flex;align-items:center;gap:12px;margin:16px 0 24px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.back-header button{color:#f59e0b;font-size:22px;background:none}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.back-header h2{font-size:24px;font-weight:900}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.player-group h3{color:#f59e0b;font-weight:700;margin-bottom:10px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.history-item{background:#111827;border-radius:14px;padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.history-item .hdate{font-size:11px;color:#6b7280}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.history-item .hround{font-size:13px;color:#d1d5db;margin-top:2px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.history-item .hscore{font-size:24px;font-weight:900}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.history-item .hpb{font-size:11px;color:#f59e0b}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-danger{width:100%;margin-top:16px;background:#450a0a;color:#fca5a5;font-weight:700;font-size:14px;padding:14px;border-radius:14px}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Stats */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-card{background:#111827;border-radius:18px;padding:16px;text-align:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-card .slabel{font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat-card .sval{font-size:30px;font-weight:900;margin-top:6px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.avg-card{background:#111827;border-radius:18px;padding:16px;margin-bottom:12px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.avg-card h4{font-size:14px;font-weight:700;color:#d1d5db;margin-bottom:12px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.avg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.avg-grid .al{font-size:11px;color:#6b7280}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.avg-grid .av{font-size:20px;font-weight:900;margin-top:2px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.avg-card .birdie-rate{font-size:11px;color:#6b7280;text-align:center;margin-top:10px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.chart-card{background:#111827;border-radius:18px;padding:16px;margin-bottom:12px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.chart-card h4{font-size:14px;font-weight:700;color:#d1d5db;margin-bottom:12px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.chart-wrap{position:relative;height:130px;width:100%}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.chart-note{font-size:11px;color:#6b7280;text-align:center;margin-top:8px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.record-card{background:#111827;border-radius:18px;padding:16px;display:flex;justify-content:space-between;align-items:center}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.record-card .rc-label{font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.record-card .rc-val{font-size:26px;font-weight:900;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.record-card .rc-gap{font-size:16px;font-weight:700;color:#d1d5db;margin-top:4px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.empty-state{color:#6b7280;text-align:center;margin-top:100px;font-size:15px}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>canvas{display:block}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div id="app"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">// ── Data helpers ──────────────────────────────────────────────────────────────</p>
+<p class="p1">const HOLES = 18, PAR = 2;</p>
+<p class="p1">const SS = (s) =&gt; s === 0 ? 'E' : s &gt; 0 ? '+'+s : ''+s;</p>
+<p class="p1">const totalScore = (h) =&gt; h.reduce((s,v) =&gt; s + (v != null ? v - PAR : 0), 0);</p>
+<p class="p1">const scoreInfo = (p) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(p===1) return {label:'Birdie',color:'#f59e0b',symbol:'🐦'};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(p===2) return {label:'Par',color:'#22c55e',symbol:'✓'};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(p===3) return {label:'Bogey',color:'#ef4444',symbol:'+1'};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(p&gt;=4)<span class="Apple-converted-space">  </span>return {label:`+${p-2}`,color:'#dc2626',symbol:`+${p-2}`};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return {label:'-',color:'#6b7280',symbol:'-'};</p>
+<p class="p1">};</p>
+<p class="p1">const loadRounds = () =&gt; { try{return JSON.parse(localStorage.getItem('pt_rounds')||'[]')}catch{return[]} };</p>
+<p class="p1">const saveRounds = (r) =&gt; { try{localStorage.setItem('pt_rounds',JSON.stringify(r))}catch{} };</p>
+<p class="p1">const fmtDate = (d) =&gt; new Date(d).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'});</p>
+<p class="p1">const fmtShort = (d) =&gt; new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short'});</p>
+<p class="p2"><br></p>
+<p class="p1">// ── State ─────────────────────────────────────────────────────────────────────</p>
+<p class="p1">let state = {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>view: 'home',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>rounds: loadRounds(),</p>
+<p class="p1"><span class="Apple-converted-space">  </span>round: null, // {twoPlayer, names, holes[[]], activePlayer, currentHole, finished}</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">function setState(updates) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Object.assign(state, updates);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>render();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Canvas chart ──────────────────────────────────────────────────────────────</p>
+<p class="p1">function drawChart(canvasId, data) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>requestAnimationFrame(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const canvas = document.getElementById(canvasId);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(!canvas) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const dpr = window.devicePixelRatio||1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const w = canvas.offsetWidth, h = canvas.offsetHeight;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>canvas.width = w*dpr; canvas.height = h*dpr;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ctx = canvas.getContext('2d');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.scale(dpr,dpr);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pad = {t:10,r:10,b:30,l:36};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const cw = w-pad.l-pad.r, ch = h-pad.t-pad.b;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const scores = data.map(d=&gt;d.score);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const minS = Math.min(...scores,-1)-1, maxS = Math.max(...scores,1)+1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const range = maxS-minS||1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const xStep = data.length &gt; 1 ? cw/(data.length-1) : cw;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const toY = (s) =&gt; pad.t + ch - ((s-minS)/range)*ch;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const toX = (i) =&gt; pad.l + (data.length&gt;1 ? i*xStep : cw/2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// grid</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.strokeStyle='#374151'; ctx.lineWidth=1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>for(let s=Math.ceil(minS);s&lt;=Math.floor(maxS);s++){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const y=toY(s);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+cw,y); ctx.stroke();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillStyle='#6b7280'; ctx.font='10px -apple-system,sans-serif';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.textAlign='right'; ctx.fillText(SS(s),pad.l-4,y+3);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// x labels</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.fillStyle='#6b7280'; ctx.font='10px -apple-system,sans-serif'; ctx.textAlign='center';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>data.forEach((d,i)=&gt;{ ctx.fillText(d.round,toX(i),h-8); });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// line</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.beginPath(); ctx.strokeStyle='#f59e0b'; ctx.lineWidth=2.5; ctx.lineJoin='round';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>data.forEach((d,i)=&gt;{ i===0?ctx.moveTo(toX(i),toY(d.score)):ctx.lineTo(toX(i),toY(d.score)); });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.stroke();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// dots</p>
+<p class="p1"><span class="Apple-converted-space">    </span>data.forEach((d,i)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath(); ctx.arc(toX(i),toY(d.score),5,0,Math.PI*2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillStyle='#f59e0b'; ctx.fill();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Render ────────────────────────────────────────────────────────────────────</p>
+<p class="p1">function render() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const app = document.getElementById('app');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {view,rounds,round} = state;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(view==='home')<span class="Apple-converted-space">    </span>{ app.innerHTML = renderHome(); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(view==='setup') <span class="Apple-converted-space">  </span>{ app.innerHTML = renderSetup(); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(view==='round') <span class="Apple-converted-space">  </span>{ app.innerHTML = renderRound(); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(view==='history') { app.innerHTML = renderHistory(); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(view==='stats') <span class="Apple-converted-space">  </span>{ app.innerHTML = renderStats(); attachStatsListeners(); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>attachListeners();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// draw chart if on stats</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(view==='stats') {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const names = [...new Set(rounds.map(r=&gt;r.player))];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const sel = document.getElementById('selPlayer')?.value || names[0];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(sel) drawChartForPlayer(sel);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Home ──────────────────────────────────────────────────────────────────────</p>
+<p class="p1">function renderHome() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {rounds} = state;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const p1name = rounds.length ? rounds[0].player : 'Player 1';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const myRounds = rounds.filter(r=&gt;r.player===p1name);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const pb = myRounds.reduce((b,r)=&gt;r.score&lt;b?r.score:b, Infinity);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const recent = [...rounds].reverse().slice(0,3);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="home-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="emoji"&gt;⛳&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;Putting Tracker&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;18-Hole Practice Session&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="pb-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="label"&gt;Your PB&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="big" style="color:#f59e0b"&gt;${pb!==Infinity?SS(pb):'—'}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sub"&gt;Record to beat: -6&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="text-align:right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="label"&gt;Rounds&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="big" style="color:#a78bfa"&gt;${myRounds.length}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn-primary" onclick="goSetup()"&gt;Start New Round 🏌️&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="grid2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-secondary" onclick="setState({view:'history'})"&gt;📋 History&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-secondary" onclick="setState({view:'stats'})"&gt;📊 Stats&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${recent.length ? `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="recent-label"&gt;Recent Rounds&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${recent.map(r=&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="recent-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="name"&gt;${r.player}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="date"&gt;${fmtShort(r.date)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="recent-score" style="color:${r.score&lt;0?'#f59e0b':r.score&gt;0?'#ef4444':'#22c55e'}"&gt;${SS(r.score)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Setup ─────────────────────────────────────────────────────────────────────</p>
+<p class="p1">let setupState = {twoPlayer:false, names:['Player 1','Player 2']};</p>
+<p class="p1">function renderSetup() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {twoPlayer,names} = setupState;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="setup-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;New Round Setup&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="setup-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="field-label"&gt;Mode&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="toggle-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="toggle-btn" style="background:${!twoPlayer?'#f59e0b':'#1f2937'};color:${!twoPlayer?'#111827':'#d1d5db'}" onclick="setMode(false)"&gt;Solo&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="toggle-btn" style="background:${twoPlayer?'#f59e0b':'#1f2937'};color:${twoPlayer?'#111827':'#d1d5db'}" onclick="setMode(true)"&gt;2 Player&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="field-label"&gt;Player 1 Name&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input class="field-input" id="p1name" value="${names[0]}" oninput="setupState.names[0]=this.value"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${twoPlayer?`</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="field-label"&gt;Player 2 Name&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input class="field-input" id="p2name" value="${names[1]}" oninput="setupState.names[1]=this.value"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;`:``}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-primary" onclick="startRound()" style="margin-bottom:0"&gt;Start Round 🏌️&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-cancel" onclick="setState({view:'home'})"&gt;Cancel&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p1">function setMode(tp) { setupState.twoPlayer=tp; render(); }</p>
+<p class="p1">function goSetup() { setupState={twoPlayer:false,names:['Player 1','Player 2']}; setState({view:'setup'}); }</p>
+<p class="p1">function startRound() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const n0 = document.getElementById('p1name')?.value || setupState.names[0];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const n1 = document.getElementById('p2name')?.value || setupState.names[1];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const names = setupState.twoPlayer ? [n0,n1] : [n0];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setState({view:'round', round:{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>twoPlayer: setupState.twoPlayer,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>names,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>holes: names.map(()=&gt;Array(HOLES).fill(null)),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>activePlayer: 0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentHole: 0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>finished: false,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Round ─────────────────────────────────────────────────────────────────────</p>
+<p class="p1">function renderRound() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {round,rounds} = state;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!round) return '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(round.finished) return renderFinished();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {twoPlayer,names,holes,activePlayer,currentHole} = round;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const curHoles = holes[activePlayer];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const curPutts = curHoles[currentHole];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const score = totalScore(curHoles);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const isLast = currentHole===HOLES-1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const isLastAction = isLast &amp;&amp; (!twoPlayer || activePlayer===1);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="round-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="quit" onclick="if(confirm('Quit this round?'))setState({view:'home',round:null})"&gt;✕ Quit&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hole-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="direction"&gt;${currentHole&lt;9?'Clockwise':'Anti-Clockwise'}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hole-num"&gt;Hole ${currentHole+1}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="score-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="slabel"&gt;Score&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sval" style="color:${score&lt;0?'#f59e0b':score&gt;0?'#ef4444':'#22c55e'}"&gt;${SS(score)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${twoPlayer?`</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="player-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${names.map((n,i)=&gt;`&lt;div class="player-tab" style="background:${activePlayer===i?'#f59e0b':'#1f2937'};color:${activePlayer===i?'#111827':'#9ca3af'}"&gt;${n} ${SS(totalScore(holes[i]))}&lt;/div&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`:``}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="putt-area"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="putt-label"&gt;${twoPlayer?names[activePlayer]+' — ':''}How many putts?&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="putt-buttons"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${[1,2,3,4].map(n=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const info=scoreInfo(n);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const sel=curPutts===n;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>return `&lt;button class="putt-btn" onclick="logPutts(${n})"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>style="background:${sel?info.color+'44':'#1f2937'};border-color:${sel?info.color:'#374151'};color:${sel?info.color:'#9ca3af'};transform:${sel?'scale(1.12)':'scale(1)'}"&gt;${n}&lt;/button&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${curPutts?`&lt;div class="putt-result"&gt;&lt;div class="symbol"&gt;${scoreInfo(curPutts).symbol}&lt;/div&gt;&lt;div class="result-label" style="color:${scoreInfo(curPutts).color}"&gt;${scoreInfo(curPutts).label}&lt;/div&gt;&lt;/div&gt;`:''}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hole-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hole-grid-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${Array(HOLES).fill(null).map((_,i)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const h=curHoles[i];</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const info=h?scoreInfo(h):null;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const isCur=i===currentHole;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>return `&lt;button class="hole-cell" onclick="jumpHole(${i})"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>style="background:${isCur?'#f59e0b22':info?info.color+'22':'#1f2937'};border-color:${isCur?'#f59e0b':info?info.color:'#374151'};color:${isCur?'#f59e0b':info?info.color:'#6b7280'}"&gt;${h||i+1}&lt;/button&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid-labels"&gt;&lt;span&gt;← Clockwise (1-9)&lt;/span&gt;&lt;span&gt;Anti-CW (10-18) →&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="nav-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-back" onclick="prevHole()" ${currentHole===0&amp;&amp;activePlayer===0?'disabled':''}&gt;← Back&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-next" onclick="nextHole()" ${curPutts==null?'disabled':''}&gt;${isLastAction?'Finish 🏁':'Next →'}&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function logPutts(n) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const r = state.round;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>r.holes = r.holes.map((ph,i)=&gt;i===r.activePlayer?ph.map((h,j)=&gt;j===r.currentHole?n:h):ph);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>render();</p>
+<p class="p1">}</p>
+<p class="p1">function jumpHole(i) { state.round.currentHole=i; state.round.activePlayer=0; render(); }</p>
+<p class="p1">function nextHole() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const r = state.round;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(r.holes[r.activePlayer][r.currentHole]==null) return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(r.twoPlayer &amp;&amp; r.activePlayer===0) { r.activePlayer=1; render(); return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>r.activePlayer=0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(r.currentHole===HOLES-1) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>r.finished=true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const saved = r.names.map((name,i)=&gt;({id:Date.now()+i,player:name,holes:r.holes[i],score:totalScore(r.holes[i]),date:new Date().toISOString()}));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const newRounds = [...state.rounds, ...saved];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>saveRounds(newRounds);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>state.rounds = newRounds;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>r.currentHole++;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p1">function prevHole() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const r = state.round;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(r.twoPlayer &amp;&amp; r.activePlayer===1) { r.activePlayer=0; render(); return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(r.twoPlayer) r.activePlayer=1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(r.currentHole&gt;0) r.currentHole--;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>render();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Finished ──────────────────────────────────────────────────────────────────</p>
+<p class="p1">function renderFinished() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {round,rounds} = state;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {names,holes,twoPlayer} = round;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="finish-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="trophy"&gt;🏆&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Round Complete!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${names.map((name,i)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const sc=totalScore(holes[i]);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pr=rounds.filter(r=&gt;r.player===name);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pb=pr.length&gt;1?pr.slice(0,-1).reduce((b,r)=&gt;r.score&lt;b?r.score:b,Infinity):Infinity;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const isNewPB=sc&lt;pb&amp;&amp;pb!==Infinity;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const isFirst=pr.length===1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `&lt;div class="result-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pname"&gt;${name}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="big-score" style="color:${sc&lt;0?'#f59e0b':sc===0?'#22c55e':'#ef4444'}"&gt;${SS(sc)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="sub"&gt;${sc&gt;=0?'+':''}${sc} vs par over 18 holes&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>${isNewPB?'&lt;div class="note" style="color:#f59e0b"&gt;🎉 New Personal Best!&lt;/div&gt;':''}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>${isFirst?'&lt;div class="note" style="color:#22c55e"&gt;First round recorded!&lt;/div&gt;':''}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>${sc&lt;=-6?'&lt;div class="note" style="color:#c084fc"&gt;🔥 You matched the record!&lt;/div&gt;':''}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${twoPlayer&amp;&amp;names.length===2?`</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="h2h-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Head-to-Head&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="winner"&gt;${totalScore(holes[0])&lt;totalScore(holes[1])?'🏆 '+names[0]+' wins!':totalScore(holes[1])&lt;totalScore(holes[0])?'🏆 '+names[1]+' wins!':"It's a tie! 🤝"}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`:``}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-done" onclick="setState({view:'home',round:null})"&gt;Done&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── History ───────────────────────────────────────────────────────────────────</p>
+<p class="p1">function renderHistory() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {rounds} = state;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const grouped = {};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>rounds.forEach(r=&gt;{ if(!grouped[r.player])grouped[r.player]=[]; grouped[r.player].push(r); });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="back-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="setState({view:'home'})"&gt;←&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Round History&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${Object.keys(grouped).length===0?'&lt;p class="empty-state"&gt;No rounds recorded yet.&lt;/p&gt;':''}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${Object.entries(grouped).map(([name,rs])=&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="player-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;${name}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${[...rs].reverse().map((r,i)=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const pb=r.score===Math.min(...rs.map(x=&gt;x.score));</p>
+<p class="p1"><span class="Apple-converted-space">          </span>return `&lt;div class="history-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;&lt;div class="hdate"&gt;${fmtDate(r.date)}&lt;/div&gt;&lt;div class="hround"&gt;Round ${rs.length-i}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="text-align:right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hscore" style="color:${r.score&lt;0?'#f59e0b':r.score&gt;0?'#ef4444':'#22c55e'}"&gt;${SS(r.score)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>${pb?'&lt;div class="hpb"&gt;PB 🏆&lt;/div&gt;':''}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${rounds.length&gt;0?`&lt;button class="btn-danger" onclick="clearHistory()"&gt;Clear All History&lt;/button&gt;`:''}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p1">function clearHistory() { if(confirm('Delete all rounds?')){ saveRounds([]); setState({rounds:[]}); } }</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Stats ─────────────────────────────────────────────────────────────────────</p>
+<p class="p1">let selPlayer = '';</p>
+<p class="p1">function renderStats() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {rounds} = state;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const names = [...new Set(rounds.map(r=&gt;r.player))];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!selPlayer || !names.includes(selPlayer)) selPlayer = names[0]||'';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stats = selPlayer ? getStats(selPlayer) : null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="back-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="setState({view:'home'})"&gt;←&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Stats &amp; Analysis&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${names.length===0?'&lt;p class="empty-state"&gt;Play some rounds to see stats!&lt;/p&gt;':''}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${names.length&gt;1?`</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="display:flex;gap:8px;margin-bottom:16px"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${names.map(n=&gt;`&lt;button onclick="switchPlayer('${n}')" style="flex:1;padding:10px;border-radius:14px;font-weight:700;font-size:13px;background:${selPlayer===n?'#f59e0b':'#1f2937'};color:${selPlayer===n?'#111827':'#d1d5db'}"&gt;${n}&lt;/button&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`:``}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${stats?`</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stat-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-card"&gt;&lt;div class="slabel"&gt;Rounds Played&lt;/div&gt;&lt;div class="sval" style="color:#a78bfa"&gt;${stats.rounds}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-card"&gt;&lt;div class="slabel"&gt;Avg Score&lt;/div&gt;&lt;div class="sval" style="color:${parseFloat(stats.avg)&lt;0?'#f59e0b':'#ef4444'}"&gt;${SS(Math.round(parseFloat(stats.avg)))}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-card"&gt;&lt;div class="slabel"&gt;Best Round&lt;/div&gt;&lt;div class="sval" style="color:#f59e0b"&gt;${SS(stats.best)}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-card"&gt;&lt;div class="slabel"&gt;Worst Round&lt;/div&gt;&lt;div class="sval" style="color:#ef4444"&gt;${SS(stats.worst)}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="avg-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h4&gt;Per Round Averages&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="avg-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;&lt;div class="al"&gt;Birdies&lt;/div&gt;&lt;div class="av" style="color:#f59e0b"&gt;${stats.avgBirdies}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;&lt;div class="al"&gt;Pars&lt;/div&gt;&lt;div class="av" style="color:#22c55e"&gt;${stats.avgPars}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;&lt;div class="al"&gt;Bogeys&lt;/div&gt;&lt;div class="av" style="color:#ef4444"&gt;${stats.avgBogeys}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;&lt;div class="al"&gt;Doubles+&lt;/div&gt;&lt;div class="av" style="color:#dc2626"&gt;${stats.avgDoubles}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="birdie-rate"&gt;Birdie rate: ${stats.birdieRate}% of holes&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${stats.chartData.length&gt;1?`</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="chart-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h4&gt;Score Progression&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-wrap"&gt;&lt;canvas id="scoreChart" style="width:100%;height:100%"&gt;&lt;/canvas&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-note"&gt;Lower is better · Target: -6&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`:``}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="record-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="rc-label"&gt;Record&lt;/div&gt;&lt;div class="rc-val" style="color:#c084fc"&gt;-6&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="text-align:center"&gt;&lt;div class="rc-label"&gt;Your PB&lt;/div&gt;&lt;div class="rc-val" style="color:#f59e0b"&gt;${stats.best!==Infinity?SS(stats.best):'—'}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="text-align:right"&gt;&lt;div class="rc-label"&gt;Gap&lt;/div&gt;&lt;div class="rc-gap"&gt;${stats.best!==Infinity?(stats.best&lt;=-6?'🏆 Record!':stats.best-(-6)+' shots'):'—'}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`:``}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p1">function getStats(name) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const rs = state.rounds.filter(r=&gt;r.player===name);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!rs.length) return null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const allHoles = rs.flatMap(r=&gt;r.holes.filter(h=&gt;h!=null));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const birdies=allHoles.filter(h=&gt;h===1).length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const pars=allHoles.filter(h=&gt;h===2).length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const bogeys=allHoles.filter(h=&gt;h===3).length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const doubles=allHoles.filter(h=&gt;h&gt;=4).length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>rounds:rs.length,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>avg:(rs.reduce((s,r)=&gt;s+r.score,0)/rs.length).toFixed(1),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>best:Math.min(...rs.map(r=&gt;r.score)),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>worst:Math.max(...rs.map(r=&gt;r.score)),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>avgBirdies:(birdies/rs.length).toFixed(1),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>avgPars:(pars/rs.length).toFixed(1),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>avgBogeys:(bogeys/rs.length).toFixed(1),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>avgDoubles:(doubles/rs.length).toFixed(1),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>birdieRate:allHoles.length?((birdies/allHoles.length)*100).toFixed(0):0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>chartData:rs.map((r,i)=&gt;({round:i+1,score:r.score})),</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p1">}</p>
+<p class="p1">function drawChartForPlayer(name) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stats = getStats(name);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(stats &amp;&amp; stats.chartData.length&gt;1) drawChart('scoreChart', stats.chartData);</p>
+<p class="p1">}</p>
+<p class="p1">function switchPlayer(name) { selPlayer=name; render(); }</p>
+<p class="p1">function attachStatsListeners() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(selPlayer) drawChartForPlayer(selPlayer);</p>
+<p class="p1">}</p>
+<p class="p1">function attachListeners() {}</p>
+<p class="p1">render();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
